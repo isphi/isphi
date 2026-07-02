@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#6C63FF</color>
+    <color name="primary_dark">#5A52D5</color>
+    <color name="primary_light">#8B85FF</color>
+    <color name="accent">#FF6584</color>
+
+    <color name="background_dark">#121212</color>
+    <color name="surface_dark">#1E1E1E</color>
+    <color name="card_dark">#2A2A2A</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="text_secondary">#B0B0B0</color>
+    <color name="divider">#3A3A3A</color>
+
+    <color name="revenue_green">#4CAF50</color>
+    <color name="expense_red">#F44336</color>
+
+    <color name="black">#FF000000</color>
+</resources>
