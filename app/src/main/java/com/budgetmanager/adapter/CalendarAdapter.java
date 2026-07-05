@@ -53,7 +53,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
         if (day.isEmpty()) {
             holder.tvDayNumber.setText("");
             holder.dot.setVisibility(View.GONE);
-            holder.root.getBackground().setColorFilter(Color.TRANSPARENT, PorterDuff.Mode.SRC_ATOP);
+            holder.root.getBackground().mutate().setColorFilter(Color.TRANSPARENT, PorterDuff.Mode.SRC_ATOP);
             holder.root.setOnClickListener(null);
             holder.root.setClickable(false);
             return;
@@ -67,7 +67,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
         } else if (day.isWeekend()) {
             bgColor = COLOR_WEEKEND;
         }
-        holder.root.getBackground().setColorFilter(bgColor, PorterDuff.Mode.SRC_ATOP);
+        holder.root.getBackground().mutate().setColorFilter(bgColor, PorterDuff.Mode.SRC_ATOP);
 
         holder.dot.setVisibility(day.hasTransactions() ? View.VISIBLE : View.GONE);
 

@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -40,6 +41,7 @@ public class CalendarFragment extends Fragment implements CalendarAdapter.OnDayC
 
     private Calendar currentCalendar;
     private List<CalendarDay> days = new ArrayList<>();
+    private LiveData<List<DailyTotal>> dailyTotalsLiveData;
 
     @Nullable
     @Override
@@ -117,8 +119,11 @@ public class CalendarFragment extends Fragment implements CalendarAdapter.OnDayC
         long start = DateUtils.getStartOfMonth(currentCalendar.getTimeInMillis());
         long end = DateUtils.getEndOfMonth(currentCalendar.getTimeInMillis());
 
-        database.articleDao().getDailyTotals(userId, start, end)
-                .observe(getViewLifecycleOwner(), totals -> {
+        if (dailyTotalsLiveData != null) {
+            dailyTotalsLiveData.removeObservers(getViewLifecycleOwner());
+        }
+        dailyTotalsLiveData = database.articleDao().getDailyTotals(userId, start, end);
+        dailyTotalsLiveData.observe(getViewLifecycleOwner(), totals -> {
                     for (CalendarDay day : days) {
                         day.setRevenue(0);
                         day.setExpense(0);

@@ -216,8 +216,11 @@ public class DashboardFragment extends Fragment {
                 Collections.sort(sorted, Comparator.comparingDouble(CategoryTotal::getTotal));
                 break;
             case SORT_NAME:
-                Collections.sort(sorted, (a, b) ->
-                        a.getCategoryName().compareToIgnoreCase(b.getCategoryName()));
+                Collections.sort(sorted, (a, b) -> {
+                    String nameA = a.getCategoryName() != null ? a.getCategoryName() : "";
+                    String nameB = b.getCategoryName() != null ? b.getCategoryName() : "";
+                    return nameA.compareToIgnoreCase(nameB);
+                });
                 break;
             case SORT_AMOUNT_DESC:
             default:
