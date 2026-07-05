@@ -9,6 +9,7 @@ import androidx.room.RoomWarnings;
 import androidx.room.Update;
 
 import com.budgetmanager.database.entity.Article;
+import com.budgetmanager.database.entity.DailyTotal;
 
 import java.util.List;
 
@@ -55,4 +56,11 @@ public interface ArticleDao {
            "WHERE c.userId = :userId AND a.date >= :startDate AND a.date <= :endDate " +
            "ORDER BY a.date DESC")
     LiveData<List<Article>> getByUserAndDateRange(long userId, long startDate, long endDate);
+
+    @Query("SELECT CAST(strftime('%d', a.date / 1000, 'unixepoch', 'localtime') AS INTEGER) AS day, " +
+           "c.type AS type, COALESCE(SUM(a.amount), 0) AS total " +
+           "FROM articles a INNER JOIN categories c ON a.categoryId = c.id " +
+           "WHERE c.userId = :userId AND a.date >= :startDate AND a.date <= :endDate " +
+           "GROUP BY day, c.type")
+    LiveData<List<DailyTotal>> getDailyTotals(long userId, long startDate, long endDate);
 }

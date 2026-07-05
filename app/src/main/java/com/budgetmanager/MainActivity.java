@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import com.budgetmanager.ui.auth.ChangePasswordActivity;
 import com.budgetmanager.ui.auth.LoginActivity;
 import com.budgetmanager.ui.budget.BudgetFragment;
+import com.budgetmanager.ui.calendar.CalendarFragment;
 import com.budgetmanager.ui.category.CategoryListFragment;
 import com.budgetmanager.ui.dashboard.DashboardFragment;
 import com.budgetmanager.utils.SessionManager;
@@ -48,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
                 fragment = new BudgetFragment();
             } else if (itemId == R.id.nav_categories) {
                 fragment = new CategoryListFragment();
+            } else if (itemId == R.id.nav_calendar) {
+                fragment = new CalendarFragment();
             }
 
             if (fragment != null) {
