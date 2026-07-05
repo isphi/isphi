@@ -22,6 +22,7 @@ public class Article {
     private String description;
     private double amount;
     private long date;
+    private String imagePath;
     private long createdAt;
 
     public Article() {
@@ -46,6 +47,9 @@ public class Article {
 
     public long getDate() { return date; }
     public void setDate(long date) { this.date = date; }
+
+    public String getImagePath() { return imagePath; }
+    public void setImagePath(String imagePath) { this.imagePath = imagePath; }
 
     public long getCreatedAt() { return createdAt; }
     public void setCreatedAt(long createdAt) { this.createdAt = createdAt; }

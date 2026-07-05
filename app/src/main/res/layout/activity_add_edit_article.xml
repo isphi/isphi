@@ -11,6 +11,25 @@
         android:orientation="vertical"
         android:padding="24dp">
 
+        <ImageView
+            android:id="@+id/iv_article_image"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/card_dark"
+            android:contentDescription="Image de l'article"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_category_placeholder" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_pick_article_image"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Choisir une image"
+            app:strokeColor="@color/primary" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
