@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_dark">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Calendrier"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <!-- Month navigation -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btn_prev_month"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Mois précédent"
+                android:src="@drawable/ic_arrow_left"
+                app:tint="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_month_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/btn_next_month"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Mois suivant"
+                android:src="@drawable/ic_arrow_right"
+                app:tint="@color/white" />
+        </LinearLayout>
+
+        <!-- Weekday headers -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView style="@style/CalendarHeader" android:text="Lun" />
+            <TextView style="@style/CalendarHeader" android:text="Mar" />
+            <TextView style="@style/CalendarHeader" android:text="Mer" />
+            <TextView style="@style/CalendarHeader" android:text="Jeu" />
+            <TextView style="@style/CalendarHeader" android:text="Ven" />
+            <TextView style="@style/CalendarHeader" android:text="Sam" />
+            <TextView style="@style/CalendarHeader" android:text="Dim" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_calendar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:nestedScrollingEnabled="false" />
+
+        <!-- Legend -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_gravity="center_vertical"
+                android:background="#3A2E4D" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="16dp"
+                android:text="Week-end"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+
+            <View
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/accent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="6dp"
+                android:text="Jour férié"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- Selected day detail -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/card_dark"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp">
+
+            <TextView
+                android:id="@+id/tv_day_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="Sélectionnez un jour"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- Holidays list -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="Jours fériés du mois"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/ll_holidays"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+    </LinearLayout>
+</ScrollView>

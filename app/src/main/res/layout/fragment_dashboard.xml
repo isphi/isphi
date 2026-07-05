@@ -127,6 +127,22 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
+        <!-- Revenue / Expense / Balance Bar Chart -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Revenus / Dépenses / Solde"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/bar_chart_summary"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_marginBottom="16dp" />
+
         <!-- Pie Charts -->
         <LinearLayout
             android:layout_width="match_parent"
@@ -150,14 +166,27 @@
         </LinearLayout>
 
         <!-- Category Totals -->
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:text="Détails par catégorie"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Détails par catégorie"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spinner_sort"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_category_totals"
