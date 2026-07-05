@@ -4,16 +4,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.budgetmanager.R;
 import com.budgetmanager.database.entity.Article;
 import com.budgetmanager.database.entity.Category;
 import com.budgetmanager.utils.DateUtils;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,6 +57,15 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
         holder.tvAmount.setText(DateUtils.formatCurrency(article.getAmount()));
         holder.tvDate.setText(DateUtils.formatDate(article.getDate()));
 
+        if (article.getImagePath() != null) {
+            Glide.with(holder.itemView.getContext())
+                    .load(new File(article.getImagePath()))
+                    .placeholder(R.drawable.ic_category_placeholder)
+                    .into(holder.ivImage);
+        } else {
+            holder.ivImage.setImageResource(R.drawable.ic_category_placeholder);
+        }
+
         if (Category.TYPE_REVENUE.equals(categoryType)) {
             holder.tvAmount.setTextColor(holder.itemView.getContext()
                     .getResources().getColor(android.R.color.holo_green_light));
@@ -73,10 +85,12 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitle, tvDescription, tvAmount, tvDate;
+        ImageView ivImage;
         ImageButton btnEdit, btnDelete;
 
         ViewHolder(View itemView) {
             super(itemView);
+            ivImage = itemView.findViewById(R.id.iv_article_image);
             tvTitle = itemView.findViewById(R.id.tv_article_title);
             tvDescription = itemView.findViewById(R.id.tv_article_description);
             tvAmount = itemView.findViewById(R.id.tv_article_amount);
